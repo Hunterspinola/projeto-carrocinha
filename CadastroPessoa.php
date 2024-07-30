@@ -27,6 +27,10 @@
                 <input type="text" name="bairro" id="bairro" placeholder="Digite seu bairro">
             </div>
             <div>
+                <label for="cep">CEP</label>
+                <input type="number" name="cep" id="cep" placeholder="Digite somente números">
+            </div>
+            <div>
                 <label for="cidade">Cidade</label>
                 <select name="cidade" id="cidade"> <br>
                     <?php 

@@ -15,14 +15,16 @@
     $email = $_POST['email'];
     $endereco = $_POST['endereco'];
     $bairro = $_POST['bairro'];
+    $cep = $_POST['cep'];
     $cidade = $_POST['cidade'];
     echo "<h1>Dados do Dono</h1>";
     echo "Nome: $nome<br>";
     echo "Email: $email<br>";
     echo "Endereço: $endereco<br>";
     echo "Bairro: $bairro<br>";
-    $sql = "INSERT INTO pessoa(nome, email, endereco, bairro, id_cidade)";
-    $sql .= " VALUES('".$nome."','".$email."','".$endereco."','".$bairro."','".$cidade."' )";
+    echo "CEP: $cep<br>";
+    $sql = "INSERT INTO pessoa(nome, email, endereco, bairro, cep, id_cidade)";
+    $sql .= " VALUES('".$nome."','".$email."','".$endereco."','".$bairro."','".$cep."','".$cidade."' )";
     echo $sql;
     //executa comando do banco de dados 
     $result = mysqli_query($con,$sql);
