@@ -1,0 +1,36 @@
+DROP DATABASE IF EXISTS CARROCINHA;
+
+CREATE DATABASE IF NOT EXISTS CARROCINHA;
+USE CARROCINHA;
+
+CREATE TABLE Cidade (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    estado CHAR(100)
+);
+CREATE TABLE Pessoa(
+id INT AUTO_INCREMENT,
+nome VARCHAR(100),
+email VARCHAR(100),
+endereco VARCHAR(100),
+bairro VARCHAR(100),
+cep VARCHAR(9),
+id_cidade INT,
+PRIMARY KEY(id),
+CONSTRAINT FK_PessoaCidade
+FOREIGN KEY(id_cidade)REFERENCES Cidade(id)
+);
+CREATE TABLE Animal(
+id INT AUTO_INCREMENT,
+especie VARCHAR(100),
+raça VARCHAR(100),
+data_nascimento VARCHAR(100),
+idade INT(100),
+castrado BOOLEAN,
+id_pessoa INT,
+PRIMARY KEY(id),
+CONSTRAINT FK_AnimalPessoa
+FOREIGN KEY(id_pessoa)REFERENCES Pessoa(id)
+);
+
+
