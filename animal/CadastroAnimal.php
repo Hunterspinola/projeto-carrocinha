@@ -27,9 +27,8 @@
                 <input type="date" name="data_nascimento" id="data_nascimento" placeholder="Digite a data de nascimento do animal">
             </div><br>
             <div>
-                <label id="text" for="castrado">Situação da castração</label>
+                <label id="castrado" for="castrado">Situação da castração</label>
                 <input type="radio" name="castrado" id="castrado" value="1">Castrado
-                <input type="radio" name="nao-castrado" id="nao-castrado" value="0" >Não castrado
             </div><br>
             <div>
                 <label for="pessoa">Dono</label>

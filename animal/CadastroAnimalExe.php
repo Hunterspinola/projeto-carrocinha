@@ -15,7 +15,7 @@
     $especie = $_POST['especie'];
     $raca = $_POST['raca'];
     $data_nascimento = $_POST['data_nascimento'];
-    $castrado = $_POST['castrado']== "Castrado" ? true : false;
+    $castrado = $_POST['castrado']== "castrado" ? 1 : 0;
     $pessoa = $_POST['pessoa'];
 
     echo "<h1>Dados do animal</h1>";
@@ -23,10 +23,10 @@
     echo "Espécie: $especie<br>";
     echo "Raça: $raca<br>";
     echo "Data de nascimento: $data_nascimento<br>";
-    echo "Castrado: " . ($castrado ? "Castrado" : "Não castrado") . "</br>";
+    echo "Castrado: " . ($castrado ? 1 : 0) . "</br>";
 
-    $sql = "INSERT INTO cliente(nome, especie, raca, idade, data_nascimento, castrado, id_pessoa)";
-    $sql .= " VALUES('".$nome."','".$especie."','".$raca."','".$data_nascimento."','".$castrado."','".$pessoa."' )";
+    $sql = "INSERT INTO pessoa (nome, especie, raca, data_nascimento, castrado, id_pessoa)";
+    $sql .= " VALUES ('".$nome."','".$especie."','".$raca."','".$data_nascimento."','".$castrado."','".$pessoa."' )";
     echo $sql;
 
     //executa comando do banco de dados 
