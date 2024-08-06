@@ -10,7 +10,7 @@
     <fieldset>
         <legend>Cadastro de Cidade</legend>
     <?php
-    include('includes/conexao.php');
+    include('../includes/conexao.php');
     $nome = $_POST['nome'];
     $estado = $_POST['estado'];
     echo "<h1>Dados da cidade</h1>";

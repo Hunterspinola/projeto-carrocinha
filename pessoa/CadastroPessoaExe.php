@@ -10,7 +10,7 @@
     <fieldset>
         <legend>Cadastro do Dono</legend>
     <?php
-    include('includes/conexao.php');
+    include('../includes/conexao.php');
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $endereco = $_POST['endereco'];

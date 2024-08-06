@@ -10,25 +10,23 @@
     <fieldset>
         <legend>Cadastro do animal</legend>
     <?php
-    include('includes/conexao.php');
+    include('../includes/conexao.php');
     $nome = $_POST['nome'];
     $especie = $_POST['especie'];
     $raca = $_POST['raca'];
-    $idade = $_POST['idade'];
     $data_nascimento = $_POST['data_nascimento'];
-    $castrado = $_POST['castrado'];
+    $castrado = $_POST['castrado']== "Castrado" ? true : false;
     $pessoa = $_POST['pessoa'];
 
     echo "<h1>Dados do animal</h1>";
     echo "Nome: $nome<br>";
     echo "Espécie: $especie<br>";
     echo "Raça: $raca<br>";
-    echo "Idade: $idade<br>";
     echo "Data de nascimento: $data_nascimento<br>";
-    echo "Situação da castração: $castrado<br>";
+    echo "Castrado: " . ($castrado ? "Castrado" : "Não castrado") . "</br>";
 
     $sql = "INSERT INTO cliente(nome, especie, raca, idade, data_nascimento, castrado, id_pessoa)";
-    $sql .= " VALUES('".$nome."','".$especie."','".$raca."','".$idade."','".$data_nascimento."','".$castrado."','".$pessoa."' )";
+    $sql .= " VALUES('".$nome."','".$especie."','".$raca."','".$data_nascimento."','".$castrado."','".$pessoa."' )";
     echo $sql;
 
     //executa comando do banco de dados 

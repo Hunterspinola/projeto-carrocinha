@@ -1,10 +1,17 @@
+<?php
+include('../includes/conexao.php');
+$id = $_GET['id'];
+$sql = "SELECT * FROM pessoa WHERE id=$id";
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> <link rel="stylesheet" href="CadastroPessoa.css">
+    <title>Document</title> <link rel="stylesheet" href="AlteraPessoa.css">
 </head>
 <body>
     <form action="CadastroPessoaExe.php" method="post">
@@ -34,7 +41,7 @@
                 <label for="cidade">Cidade</label>
                 <select name="cidade" id="cidade"> <br>
                     <?php 
-                    include('includes/conexao.php');
+                    include('../includes/conexao.php');
                     $sql = "SELECT * FROM cidade ";
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_array($result)){

@@ -9,16 +9,16 @@
 </head>
 <body>
     <?php 
-    include('includes/conexao.php');
+    include('../includes/conexao.php');
     $sql = "SELECT * FROM cidade";
     $result = mysqli_query($con,$sql);
     
     ?>
       <nav>
         <ul>
-        <li><a href="cadastrarCliente.php">Cadastrar cliente</a></li>
-        <li><a href="listarCliente.php">Ver clientes já cadastrados</a></li>
-        <li><a href="index.html">MENU</a></li>
+        <li><a href="../pessoa/CadastroPessoa.php">Cadastrar Dono</a></li>
+        <li><a href="../pessoa/ListarPessoa.php">Ver Donos já cadastrados</a></li>
+        <li><a href="../index.html">MENU</a></li>
         </ul>
         
        
@@ -38,8 +38,8 @@
             echo "<td>".$row['id']."</td>";
             echo "<td>".$row['nome']."</td>";
             echo "<td>".$row['estado']."</td>";
-            echo "<td><a href = 'alteraCidade.php?id=".$row['id']."'>Alterar</a></td>";
-            echo "<td><a href = 'deletaCidade.php?id=".$row['id']."'>Deleta</a></td>";
+            echo "<td><a href = 'AlteraCidade.php?id=".$row['id']."'>Alterar</a></td>";
+            echo "<td><a href = 'DeletaCidade.php?id=".$row['id']."'>Deleta</a></td>";
             echo "</tr>";
         }
         ?> 

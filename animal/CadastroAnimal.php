@@ -23,10 +23,6 @@
                 <input type="text" name="raca" id="raca" placeholder="Digite a Raça do animal">
             </div>
             <div>
-                <label for="idade">Idade</label>
-                <input type="number" name="idade" id="idade" placeholder="Digite a idade do animal">
-            </div><br>
-            <div>
                 <label for="data_nascimento">Data de nascimento</label>
                 <input type="date" name="data_nascimento" id="data_nascimento" placeholder="Digite a data de nascimento do animal">
             </div><br>
@@ -39,7 +35,7 @@
                 <label for="pessoa">Dono</label>
                 <select name="pessoa" id="pessoa"> <br>
                     <?php 
-                    include('includes/conexao.php');
+                    include('../includes/conexao.php');
                     $sql = "SELECT * FROM pessoa ";
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_array($result)){

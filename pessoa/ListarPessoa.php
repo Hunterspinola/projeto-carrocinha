@@ -11,7 +11,7 @@
     
     <?php
 
-    include('includes/conexao.php');
+    include('../includes/conexao.php');
     $sql = "SELECT cli.id, cli.nome nomepessoa, cli.email, cli.endereco, cli.bairro, cli.cep, cid.nome nomecidade, cid.estado 
             from pessoa cli 
             left join cidade cid on cid.id = cli.id_cidade";
@@ -20,9 +20,9 @@
     ?>
     <nav>
         <ul>
-        <li><a href="cadastrocidade.html">Cadastrar Animal</a></li>
-        <li><a href="listarcidade.php">Ver animais já cadastrados</a></li>
-        <li><a href="index.html">MENU</a></li>
+        <li><a href="../animal/CadastroAnimal.php">Cadastrar Animal</a></li>
+        <li><a href="../animal/ListarAnimal.php">Ver animais já cadastrados</a></li>
+        <li><a href="../index.html">MENU</a></li>
         </ul>
         
        
