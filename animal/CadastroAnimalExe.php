@@ -11,6 +11,16 @@
         <legend>Cadastro do animal</legend>
     <?php
     include('../includes/conexao.php');
+    //UPLOAD FOTO
+    $nome_foto = "";
+    if(file_exists($_FILES['foto']['tmp_name'])){
+        $pasta_destino = 'fotos/';
+        $extensao = strtolower(substr($_FILES['foto']['name'], -4));
+        $nome_foto = $pasta_destino . date('Ymd-His').$extensao;
+        move_uploaded_file($_FILES['foto']['tmp_name'],$nome_foto);
+    }
+    //FIM DO OPLOAD
+
     $nome = $_POST['nome'];
     $especie = $_POST['especie'];
     $raca = $_POST['raca'];
@@ -23,10 +33,10 @@
     echo "Espécie: $especie<br>";
     echo "Raça: $raca<br>";
     echo "Data de nascimento: $data_nascimento<br>";
-    echo "Castrado: " . ($castrado ? 1 : 0) . "</br>";
+    echo "Castrado: " . ($castrado ? "sim" : "não") . "</br>";
 
-    $sql = "INSERT INTO animal (nome, especie, raca, data_nascimento, castrado, id_pessoa)";
-    $sql .= " VALUES ('".$nome."','".$especie."','".$raca."','".$data_nascimento."','".$castrado."','".$pessoa."' )";
+    $sql = "INSERT INTO animal (nome, especie, raca, data_nascimento, castrado, id_pessoa, foto)";
+    $sql .= " VALUES ('".$nome."','".$especie."','".$raca."','".$data_nascimento."','".$castrado."','".$pessoa."','".$nome_foto."' )";
     echo $sql;
 
     //executa comando do banco de dados 

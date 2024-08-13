@@ -12,7 +12,7 @@
     <?php
 
     include('../includes/conexao.php');
-    $sql = "SELECT cli.id, cli.nome nomeanimal, cli.especie, cli.raca, cli.data_nascimento, cli.castrado, cid.nome nomepessoa
+    $sql = "SELECT cli.id, cli.nome nomeanimal, cli.especie, cli.raca, cli.data_nascimento, cli.castrado, cid.nome nomepessoa, cli.foto
             from animal cli 
             left join pessoa cid on cid.id = cli.id_pessoa";
     $result = mysqli_query($con,$sql);
@@ -30,6 +30,8 @@
     <table align="center" border="1" width="500">
         <tr>
             <th>Código</th>
+            <th>Código foto</th>
+            <th>Foto</th>
             <th>Nome</th>
             <th>Espécie</th>
             <th>Raça</th>
@@ -51,6 +53,11 @@
 
             echo "<tr>";
             echo "<td>".$row['id']."</td>";
+            echo "<td>".$row['foto']."</td>";
+            if($row ['foto'] == "")
+                echo "<td></td>";
+            else
+            echo "<td><img src= '".$row['foto']."' width='80' height'100'/></td>";
             echo "<td>".$row['nomeanimal']."</td>";
             echo "<td>".$row['especie']."</td>";
             echo "<td>".$row['raca']."</td>";
@@ -58,8 +65,8 @@
             echo "<td>".$row['data_nascimento']."</td>";
             echo "<td>".$row['castrado']."</td>"; 
             echo "<td>".$row['nomepessoa']."</td>";           
-            echo "<td><a href = 'AlteraPessoa.php?id=".$row['id']."'>Alterar</a></td>";
-            echo "<td><a href = 'DeletaPessoa.php?id=".$row['id']."'>Deleta</a></td>";
+            echo "<td><a href = 'AlteraAnimal.php?id=".$row['id']."'>Alterar</a></td>";
+            echo "<td><a href = 'DeletaAnimal.php?id=".$row['id']."'>Deleta</a></td>";
             echo "</tr>";
         }
         ?> 

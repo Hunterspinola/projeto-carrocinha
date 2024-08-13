@@ -33,7 +33,7 @@
             
             <div>
                 <label for="cidade">Cidade</label>
-                <select name="cidade" id="cidade"> <br>
+                <select name="cidade" id="cidade"> 
                     <?php 
                     include('../includes/conexao.php');
                     $sql = "SELECT * FROM cidade ";
@@ -44,7 +44,7 @@
                     ?>
                 </select>
               
-            </div>
+            </div><br>
             <div>
                 <button type="submit">Cadastrar</button>
             </div> <br>

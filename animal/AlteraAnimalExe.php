@@ -1,5 +1,14 @@
 <?php
 include('../includes/conexao.php');
+//UPLOAD FOTO
+$nome_foto = "";
+if(file_exists($_FILES['foto']['tmp_name'])){
+    $pasta_destino = 'fotos/';
+    $extensao = strtolower(substr($_FILES['foto']['name'], -4));
+    $nome_foto = $pasta_destino . date('Ymd-His').$extensao;
+    move_uploaded_file($_FILES['foto']['tmp_name'],$nome_foto);
+}
+//FIM DO OPLOAD
 $id = $_POST['id'];
 $nome = $_POST['nome'];
 $especie = $_POST['especie'];
@@ -20,8 +29,11 @@ $pessoa = $_POST['pessoa'];
     <h1> Alteração de animal</h1>
 
     <?php
+    if($nome_foto == "")
         $sql = "UPDATE Pessoa SET nome = '$nome', especie = '$especie', raca = '$raca', data_nascimento = '$data_nascimento', castrado = '$castrado', pessoa = '$pessoa' WHERE id = $id";
-        $result = mysqli_query($con, $sql);
+    else
+        $sql = "UPDATE Pessoa SET foto = '$nome_foto', nome = '$nome', especie = '$especie', raca = '$raca', data_nascimento = '$data_nascimento', castrado = '$castrado', pessoa = '$pessoa' WHERE id = $id";
+    $result = mysqli_query($con, $sql);
         if($result)
         echo "Dados atualizados";
         else

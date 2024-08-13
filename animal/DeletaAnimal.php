@@ -22,5 +22,8 @@
             echo "<h2>".mysqli_error($con)."</h2>";
         }
     ?>
+    <div>
+        <button><a  href="ListarAnimal.php">Listar animal</a></button>
+    </div><br>
 </body>
 </html>

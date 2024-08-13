@@ -1,5 +1,5 @@
 <?php
-include('includes/conexao.php');
+include('../includes/conexao.php');
 $id = $_GET['id'];
 $sql = "SELECT * FROM animal WHERE id=$id";
 $result = mysqli_query($con, $sql);
@@ -14,35 +14,43 @@ $row = mysqli_fetch_array($result);
     <title>Document</title> <link rel="stylesheet" href="AlteraAnimal.css">
 </head>
 <body>
-    <form action="CadastroAnimalExe.php" method="post">
+    <form action="AlteraAnimalExe.php" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Cadastro do Animal</legend>
             <div>
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Digite seu nome completo">
+                <?php
+                    if($row['foto'] != ""){
+                        echo "<img src='".$row['foto']."' width='80' height='100'/><br>";
+                    }
+                ?>
+                <label for="foto">Foto</label>
+                <input type="file" name="foto" id="foto" accept="image/*">
             </div>
             <div>
-                <label for="especie">Espécie</label>
-                <input type="text" name="especie" id="especie" placeholder="Digite a espécie do animal">
-            </div>
-            <div>
-                <label for="raca">Raça</label>
-                <input type="text" name="raca" id="raca" placeholder="Digite a Raça do animal">
-            </div>
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome" value="<?php echo $row['nome'] ?>" />
+                </div>
+                <div>
+                    <label for="especie">Espécie</label>
+                    <input type="text" name="especie" id="especie" value="<?php echo $row['especie'] ?>" />
+                </div>
+                <div>
+                    <label for="raca">Raça</label>
+                    <input type="text" name="raca" id="raca" value="<?php echo $row['raca'] ?>" />
+                </div>
             <div>
                 <label for="data_nascimento">Data de nascimento</label>
-                <input type="date" name="data_nascimento" id="data_nascimento" placeholder="Digite a data de nascimento do animal">
+                <input type="date" name="data_nascimento" id="data_nascimento" value="<?php echo $row['data_nascimento'] ?>" />
             </div><br>
             <div>
                 <label id="text" for="castrado">Situação da castração</label>
-                <input type="radio" name="castrado" id="castrado" value="1">Castrado
-                <input type="radio" name="nao-castrado" id="nao-castrado" value="0" >Não castrado
+                <input type="radio" name="castrado" id="castrado" value="1"<?php echo $row['castrado'] == 1 ? "checked" : "" ?> /><label id="castrado">Sim</label>
             </div><br>
             <div>
                 <label for="pessoa">Dono</label>
                 <select name="pessoa" id="pessoa"> <br>
                     <?php 
-                    include('includes/conexao.php');
+                    include('../includes/conexao.php');
                     $sql = "SELECT * FROM pessoa ";
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_array($result)){
@@ -51,6 +59,7 @@ $row = mysqli_fetch_array($result);
                     ?>
                 </select>
             </div> <br>
+            <input type="hidden" name='id' value='<?php echo $row['id'] ?>'>
             <div>
                 <button type="submit">Cadastrar</button>
             </div> <br>
