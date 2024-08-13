@@ -45,6 +45,7 @@ $row = mysqli_fetch_array($result);
             <div>
                 <label id="text" for="castrado">Situação da castração</label>
                 <input type="radio" name="castrado" id="castrado" value="1"<?php echo $row['castrado'] == 1 ? "checked" : "" ?> /><label id="castrado">Sim</label>
+                <input type="radio" name="castrado" id="castrado" value="1"<?php echo $row['castrado'] != 1 ? "checked" : "" ?> /><label id="castrado">Não</label>
             </div><br>
             <div>
                 <label for="pessoa">Dono</label>
@@ -59,7 +60,7 @@ $row = mysqli_fetch_array($result);
                     ?>
                 </select>
             </div> <br>
-            <input type="hidden" name='id' value='<?php echo $row['id'] ?>'>
+            <input type="hidden" name='id' value='<?php echo $id ?>'>
             <div>
                 <button type="submit">Cadastrar</button>
             </div> <br>

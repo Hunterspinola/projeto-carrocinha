@@ -30,16 +30,21 @@ $pessoa = $_POST['pessoa'];
 
     <?php
     if($nome_foto == "")
-        $sql = "UPDATE Pessoa SET nome = '$nome', especie = '$especie', raca = '$raca', data_nascimento = '$data_nascimento', castrado = '$castrado', pessoa = '$pessoa' WHERE id = $id";
+        $sql = "UPDATE Animal SET nome = '$nome', especie = '$especie', raca = '$raca', data_nascimento = '$data_nascimento', castrado = '$castrado' WHERE id = $id";
     else
-        $sql = "UPDATE Pessoa SET foto = '$nome_foto', nome = '$nome', especie = '$especie', raca = '$raca', data_nascimento = '$data_nascimento', castrado = '$castrado', pessoa = '$pessoa' WHERE id = $id";
+        $sql = "UPDATE Animal SET foto = '$nome_foto', nome = '$nome', especie = '$especie', raca = '$raca', data_nascimento = '$data_nascimento', castrado = '$castrado' WHERE id = $id";
+    
+    echo $sql;
     $result = mysqli_query($con, $sql);
-        if($result)
+    if($result)
         echo "Dados atualizados";
-        else
+     else
         echo "Erro ao atualizar dados!\n".mysqli_error($con);
 
     
     ?>
+    <div>
+        <button><a href="ListarAnimal.php">voltar</a></button>
+    </div>
 </body>
 </html>
